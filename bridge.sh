@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define bridge names
-BRIDGES=("nokia-br-dummy" "nokia-br-11" "nokia-br-12" "nokia-br-13" "nokia-br-14" "nokia-br-21" "nokia-br-22" "nokia-br-23" "nokia-br-24")
+BRIDGES=("nokia-br-dummy1" "nokia-br-dummy2" "nokia-br-dummy3" "nokia-br-dummy4" "nokia-br-11" "nokia-br-12" "nokia-br-13" "nokia-br-14" "nokia-br-21" "nokia-br-22" "nokia-br-23" "nokia-br-24")
 
 # Function to create bridges
 create_bridges() {

@@ -65,7 +65,13 @@ topology:
         - ip route add default via 5.5.5.1
 
 ###### Bridge Rack 1 ######
-    nokia-br-dummy:
+    nokia-br-dummy1:
+      kind: bridge
+    nokia-br-dummy2:
+      kind: bridge
+    nokia-br-dummy3:
+      kind: bridge
+    nokia-br-dummy4:
       kind: bridge
     nokia-br-11:
       kind: bridge
@@ -120,23 +126,23 @@ topology:
   # frr-1 - Bridge
     - endpoints: ["frr1:eth1", "nokia-br-11:11"]
     - endpoints: ["frr1:eth2", "nokia-br-12:12"]
-    - endpoints: ["frr1:eth5", "nokia-br-dummy:15"]
-    - endpoints: ["frr1:eth6", "nokia-br-dummy:16"]
+    - endpoints: ["frr1:eth5", "nokia-br-dummy1:15"]
+    - endpoints: ["frr1:eth6", "nokia-br-dummy1:16"]
   # frr-2 - Bridge
     - endpoints: ["frr2:eth1", "nokia-br-13:23"]
     - endpoints: ["frr2:eth2", "nokia-br-14:24"]
-    - endpoints: ["frr2:eth5", "nokia-br-dummy:25"]
-    - endpoints: ["frr2:eth6", "nokia-br-dummy:26"]
+    - endpoints: ["frr2:eth5", "nokia-br-dummy2:25"]
+    - endpoints: ["frr2:eth6", "nokia-br-dummy2:26"]
   # frr-3 - Bridge
     - endpoints: ["frr3:eth1", "nokia-br-21:31"]
     - endpoints: ["frr3:eth2", "nokia-br-22:32"]
-    - endpoints: ["frr3:eth5", "nokia-br-dummy:35"]
-    - endpoints: ["frr3:eth6", "nokia-br-dummy:36"]
+    - endpoints: ["frr3:eth5", "nokia-br-dummy3:35"]
+    - endpoints: ["frr3:eth6", "nokia-br-dummy3:36"]
   # frr-4 - Bridge
     - endpoints: ["frr4:eth1", "nokia-br-23:43"]
     - endpoints: ["frr4:eth2", "nokia-br-24:44"]
-    - endpoints: ["frr4:eth5", "nokia-br-dummy:45"]
-    - endpoints: ["frr4:eth6", "nokia-br-dummy:46"]
+    - endpoints: ["frr4:eth5", "nokia-br-dummy4:45"]
+    - endpoints: ["frr4:eth6", "nokia-br-dummy4:46"]
 
   # sflow collector -- b-leaf1
     - endpoints: ["b-leaf1:e1-10", "collector:eth1"]
