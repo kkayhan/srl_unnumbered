@@ -40,22 +40,30 @@ topology:
       kind: linux
       binds:
         - startup_configs/frr1.conf:/etc/frr/frr.conf
-        - startup_configs/frr-daemons.conf:/etc/frr/daemons   
+        - startup_configs/frr-daemons.conf:/etc/frr/daemons
+      exec:
+        - ip link set dev eth0 down
     frr2:
       kind: linux
       binds:
         - startup_configs/frr2.conf:/etc/frr/frr.conf
         - startup_configs/frr-daemons.conf:/etc/frr/daemons    
+      exec:
+        - ip link set dev eth0 down 
     frr3:
       kind: linux
       binds:
         - startup_configs/frr3.conf:/etc/frr/frr.conf
         - startup_configs/frr-daemons.conf:/etc/frr/daemons     
+      exec:
+        - ip link set dev eth0 down 
     frr4:
       kind: linux
       binds:
         - startup_configs/frr4.conf:/etc/frr/frr.conf
         - startup_configs/frr-daemons.conf:/etc/frr/daemons     
+      exec:
+        - ip link set dev eth0 down 
     collector:
       kind: linux
       image: corfr/tcpdump
