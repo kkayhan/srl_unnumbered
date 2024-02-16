@@ -5,14 +5,6 @@ BRIDGES=("nokia-br-dummy1" "nokia-br-dummy2" "nokia-br-dummy3" "nokia-br-dummy4"
 
 # Function to create bridges and update iptables and ip6tables
 create_bridges() {
-    # Set default policies to ACCEPT for iptables and ip6tables
-    iptables -P INPUT ACCEPT
-    iptables -P OUTPUT ACCEPT
-    iptables -P FORWARD ACCEPT
-
-    ip6tables -P INPUT ACCEPT
-    ip6tables -P OUTPUT ACCEPT
-    ip6tables -P FORWARD ACCEPT
 
     for br in "${BRIDGES[@]}"; do
         echo "Creating bridge $br"
