@@ -7,10 +7,21 @@ topology:
   kinds:
     nokia_srlinux:
       image: ghcr.io/nokia/srlinux:23.10.2
+    nokia_sros:
+      image: vrnetlab/nokia-sros:23.10.R3
+      license: ./license.txt
     linux:
       image: quay.io/frrouting/frr:9.0.2
-
+#########################################################
   nodes:
+    dcgw1:
+      kind: nokia_sros
+      type: sr-1
+      startup-config: ./startup_configs/dcgw1.partial.cfg
+    dcgw2:
+      kind: nokia_sros
+      type: sr-1
+      startup-config: ./startup_configs/dcgw2.partial.cfg
     spine1:
       type: ixrd3l
       startup-config: ./startup_configs/spine1.cfg
@@ -101,6 +112,11 @@ topology:
 ############################
 
   links:
+  # DCGW - Spine
+    - endpoints: ["dcgw1:eth1", "spine1:e1-21"]
+    - endpoints: ["dcgw1:eth2", "spine2:e1-21"]
+    - endpoints: ["dcgw2:eth1", "spine1:e1-22"]
+    - endpoints: ["dcgw2:eth2", "spine2:e1-22"]
   # Border Leaf - Spine
     - endpoints: ["b-leaf1:e1-49", "spine1:e1-31"]
     - endpoints: ["b-leaf1:e1-50", "spine2:e1-31"]
