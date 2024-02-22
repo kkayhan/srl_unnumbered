@@ -74,6 +74,13 @@ topology:
         - startup_configs/frr4.conf:/etc/frr/frr.conf
         - startup_configs/frr-daemons.conf:/etc/frr/daemons     
       exec:
+        - ip link set dev eth0 down
+    frr5:
+      kind: linux
+      binds:
+        - startup_configs/frr5.conf:/etc/frr/frr.conf
+        - startup_configs/frr-daemons.conf:/etc/frr/daemons     
+      exec:
         - ip link set dev eth0 down 
     collector:
       kind: linux
@@ -91,6 +98,8 @@ topology:
     nokia-br-dummy3:
       kind: bridge
     nokia-br-dummy4:
+      kind: bridge
+    nokia-br-dummy5:
       kind: bridge
     nokia-br-11:
       kind: bridge
@@ -175,6 +184,10 @@ topology:
     - endpoints: ["frr4:eth4", "nokia-br-24:44"]
     - endpoints: ["frr4:eth5", "nokia-br-dummy4:45"]
     - endpoints: ["frr4:eth6", "nokia-br-dummy4:46"]
+  # frr-5 - Bridge & DCGW  ( Attached to DCGW simulating Internet )
+    - endpoints: ["frr5:eth1", "dcgw1:eth10"]
+    - endpoints: ["frr5:eth2", "dcgw2:eth10"]
+    - endpoints: ["frr5:eth3", "nokia-br-dummy5:55"]
 
   # sflow collector -- b-leaf1
     - endpoints: ["b-leaf1:e1-10", "collector:eth1"]
