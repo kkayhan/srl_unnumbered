@@ -8,8 +8,8 @@ topology:
     nokia_srlinux:
       image: ghcr.io/nokia/srlinux:23.10.2
     nokia_sros:
-#      image: vrnetlab/nokia-sros:23.10.R3
-      image: registry.srlinux.dev/pub/vr-sros:24.3.R1
+      image: vrnetlab/nokia-sros:23.10.R3
+
       license: ./license.txt
     linux:
       image: quay.io/frrouting/frr:9.0.2
