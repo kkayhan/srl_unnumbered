@@ -89,6 +89,12 @@ topology:
         - ip route del default
         - ip addr add 5.5.5.5/24 dev eth1
         - ip route add default via 5.5.5.1
+    client:
+      kind: linux
+      image: debian:stable
+      exec:
+        - apt update && apt install wide-dhcpv6-client vim -y
+
 
 ###### Bridge Rack 1 ######
     nokia-br-dummy1:
@@ -191,3 +197,6 @@ topology:
 
   # sflow collector -- b-leaf1
     - endpoints: ["b-leaf1:e1-10", "collector:eth1"]
+
+  # SLAAC client - Leaf1
+    - endpoints: ["leaf1:e1-10", "client:eth1"]
