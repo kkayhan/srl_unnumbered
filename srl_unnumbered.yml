@@ -91,9 +91,9 @@ topology:
         - ip route add default via 5.5.5.1
     client:
       kind: linux
-      image: debian:stable
-      exec:
-        - apt update && apt install wide-dhcpv6-client vim -y
+      image: sphalerite1313/dhclient
+#      exec:
+#        - apt update && apt install isc-dhcp-client vim net-tools -y
 
 
 ###### Bridge Rack 1 ######
@@ -200,3 +200,4 @@ topology:
 
   # SLAAC client - Leaf1
     - endpoints: ["leaf1:e1-10", "client:eth1"]
+    
